@@ -1,6 +1,5 @@
 # SQF Full Stack Engineer Exercise
-👋 Welcome to the Squadformers Full Stack Engineer Exercise. With this exercise we'll be building a full stack app built
-on JavaScript. Our stack consists of a scaffolded React frontend, and an Express backend. We've designed this exercise
+👋 Welcome to the Squadformers Full Stack Engineer Exercise. With this exercise we'll be building a full stack app with JavaScript. Our stack consists of a scaffolded React frontend, and an Express backend. We've designed this exercise
 to simply touch both the backend and the frontend. Normally, when developing a full-stack app, you'd make considerations
 such as, storage, caching, deployment, content-delivery, etc. For this exercise, your backend will talk to an external
 JSON server, but that's about it. So with that said, let's dive right in!
