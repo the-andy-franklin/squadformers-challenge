@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "runtimeArgs": ["-r", "ts-node/register"],
+      "runtimeExecutable": "ts-node",
       "console": "integratedTerminal",
       "program": "${workspaceFolder}/src/index.ts",
     }

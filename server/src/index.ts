@@ -1,11 +1,16 @@
-const express = require('express');
+import '../logger';
+import express, { Request, Response, NextFunction } from 'express';
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.get('/api', (req, res) => {
+app.get('/health-check', (req: Request, res: Response, next: NextFunction) => {
 	res.json({ message: 'Hello from server!' });
+});
+
+app.get('/todos', (req, res, next) => {
+	fetch('https://jsonplaceholder.typicode.com/todos');
 });
 
 app.listen(PORT, () => {

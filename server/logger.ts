@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 ['debug', 'log', 'warn', 'error'].forEach((methodName) => {
 	const originalMethod = console[methodName];
 	console[methodName] = (...args) => {
