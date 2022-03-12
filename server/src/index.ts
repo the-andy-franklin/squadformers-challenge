@@ -17,7 +17,7 @@ app.get('/health-check', (req: Request, res: Response, next: NextFunction) => {
 	res.json({ message: 'Hello from server!' });
 });
 
-app.get('/todos', async (req, res, next) => {
+app.get('/todos', async (req: Request, res: Response, next: NextFunction) => {
 	const response = await fetch('https://jsonplaceholder.typicode.com/todos/', {
 		method: 'GET',
 	});
