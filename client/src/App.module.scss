@@ -1,0 +1,100 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content {
+  padding: 36px;
+  background-color: white;
+  width: 60%;
+  box-shadow: 2px 4px 12px 4px #5a717d;
+}
+
+.header {
+  margin: 0;
+  color: #606160;
+  text-shadow: 0 0 2px #54A7C9;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input-field {
+  color: #276F97;
+  line-height: 1.8;
+  font-size: 18px;
+  width: 300px;
+  text-align: center;
+  &:focus {
+    outline: 2px solid yellow;
+    border: 1px solid #54A7C9;
+  }
+}
+
+.input-button {
+  border: none;
+  color: white;
+  font-size: 24px;
+  background-color: #54A7C9;
+  width: 38px;
+  height: 38px;
+}
+
+.todos-list {
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-portion {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.tracker {
+  border: 1px solid black;
+  position: relative;
+  width: 100%;
+  flex: 2;
+}
+
+.tracker-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.tracker-yellow {
+  height: 100%;
+  background-color: yellow;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.remove-button {
+  flex: 1;
+  border: none;
+  color: white;
+  font-size: 18px;
+  background-color: #54A7C9;
+  font-size: 18px;
+  line-height: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    box-shadow: inset 0 0 2px 2px #276F97;
+  }
+}

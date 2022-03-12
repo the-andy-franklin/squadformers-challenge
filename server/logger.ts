@@ -9,6 +9,7 @@ import chalk from 'chalk';
 				.split('\n')[2] // slice off first 2 lines
 				.trim() // remove excess space
 				.substring(3) // remove first 3 characters ("at ")
+				.replace('file://', '')
 				.replace(`${process.cwd()}/`, '') // remove script folder path
 				.replace(/\s\(/, ' at ') // removes the open parens and replaces it with " at "
 				.replace(/\)/, ''); // removes close parens

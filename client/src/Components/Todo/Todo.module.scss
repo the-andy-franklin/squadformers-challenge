@@ -1,0 +1,33 @@
+.todo-item {
+  color: #276F97;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #EEF1F3;
+  &:last-child {
+    border-bottom: 1px solid #EEF1F3;
+  }
+  &:hover {
+    background-color: #F2FAFE;
+  }
+}
+
+.todo-left, .todo-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-checkbox {
+  &:hover {
+    cursor: pointer
+  }
+}
+
+.svg {
+  color: #D4E8F1;
+  &:hover {
+    cursor: pointer;
+  }
+}
