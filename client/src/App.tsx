@@ -3,10 +3,9 @@ import classes from './App.module.scss';
 import { Todo } from './Components/Todo';
 import { ReactComponent as Close } from './Assets/Close.svg';
 
-let count = 0;
-
 const App = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
+	const [count, setCount] = useState<number>(0);
 
 	useEffect(() => {
 		(async () => {
@@ -19,10 +18,16 @@ const App = () => {
 		})();
 	}, []);
 
+	useEffect(() => {
+		if (todos.length) {
+			setCount(todos.slice(-1)[0].id + 1);
+		}
+	}, [todos]);
+
 	const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const newTodo: Todo = {
-			id: count++,
+			id: count,
 			title: e.target[0].value.trim(),
 			completed: false,
 		};
@@ -64,12 +69,10 @@ const App = () => {
 			throw new Error('Something wrong with your id logic');
 		}
 
-		const newTodos: Todo[] = [
+		setTodos([
 			...todos.slice(0, indexOfTodoToRemove),
 			...todos.slice(indexOfTodoToRemove + 1),
-		];
-
-		setTodos([...newTodos]);
+		]);
 	};
 
 	const removeAllChecks = () => {
@@ -101,7 +104,7 @@ const App = () => {
 						/>
 					))}
 				</div>
-				<div className={classes['bottom-portion']}>
+				<div className={classes['footer']}>
 					<div className={classes['tracker']}>
 						<div className={classes['tracker-info']}>
 							<b>{a}</b> of <b>{b}</b> tasks done
@@ -111,10 +114,7 @@ const App = () => {
 							style={{ width: `${(a / b) * 100 || 0}%` }}
 						/>
 					</div>
-					<button
-						className={classes['remove-button']}
-						onClick={removeAllChecks}
-					>
+					<button className={classes['uncheck-all']} onClick={removeAllChecks}>
 						Remove Checked <Close />
 					</button>
 				</div>

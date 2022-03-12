@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ReactComponent as Edit } from '../../Assets/Edit.svg';
 import { ReactComponent as Close } from '../../Assets/Close.svg';
 import CheckBox from 'react-custom-checkbox';
@@ -20,14 +20,15 @@ type Props = {
 
 export const Todo = ({ todo, editTodo, checkTodo, removeTodo }: Props) => {
 	const [editing, setEditing] = useState<boolean>(false);
+	const inputRef = useRef<HTMLInputElement>();
 
 	const handleCheck = (e: boolean) => {
 		checkTodo(todo, e);
 	};
 
 	const toggleEditing = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-		if (editing && e.target?.[0]?.value) {
-			editTodo(todo, e.target[0].value);
+		if (editing && inputRef?.current) {
+			editTodo(todo, inputRef.current.value);
 		}
 		setEditing((prev) => !prev);
 	};
@@ -51,7 +52,12 @@ export const Todo = ({ todo, editTodo, checkTodo, removeTodo }: Props) => {
 				/>
 				{editing ? (
 					<form onSubmit={handleSubmit}>
-						<input type="text" defaultValue={todo.title} autoFocus />
+						<input
+							type="text"
+							defaultValue={todo.title}
+							autoFocus
+							ref={inputRef}
+						/>
 					</form>
 				) : (
 					<span
