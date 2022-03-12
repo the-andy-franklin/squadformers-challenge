@@ -7,14 +7,14 @@ import classes from './Todo.module.scss';
 
 export type Todo = {
 	id: number;
-	content: string;
-	checked: boolean;
+	title: string;
+	completed: boolean;
 };
 
 type Props = {
 	todo: Todo;
-	editTodo: (todo: Todo, newContent: string) => void;
-	checkTodo: (todo: Todo, checked: boolean) => void;
+	editTodo: (todo: Todo, newTitle: string) => void;
+	checkTodo: (todo: Todo, completed: boolean) => void;
 	removeTodo: (todo: Todo) => void;
 };
 
@@ -46,23 +46,23 @@ export const Todo = ({ todo, editTodo, checkTodo, removeTodo }: Props) => {
 					className={classes['todo-checkbox']}
 					icon={<Icon.FiCheck color="#697aad" size={18} />}
 					borderColor={'#ccc'}
-					checked={todo.checked}
+					checked={todo.completed}
 					onChange={(e: boolean) => handleCheck(e)}
 				/>
 				{editing ? (
 					<form onSubmit={handleSubmit}>
-						<input type="text" defaultValue={todo.content} autoFocus />
+						<input type="text" defaultValue={todo.title} autoFocus />
 					</form>
 				) : (
 					<span
-						className={classes['todo-content']}
+						className={classes['todo-title']}
 						style={
-							todo.checked
+							todo.completed
 								? { textDecoration: 'line-through' }
 								: { textDecoration: 'none' }
 						}
 					>
-						{todo.content}
+						{todo.title}
 					</span>
 				)}
 			</div>

@@ -10,7 +10,12 @@ const App = () => {
 
 	useEffect(() => {
 		(async () => {
-			await fetch('http://localhost:3001/todos');
+			const todoData = await fetch('http://localhost:3001/todos', {
+				method: 'GET',
+				mode: 'cors',
+			});
+			const data = await todoData.json();
+			setTodos([...data]);
 		})();
 	}, []);
 
@@ -18,16 +23,16 @@ const App = () => {
 		e.preventDefault();
 		const newTodo: Todo = {
 			id: count++,
-			content: e.target[0].value.trim(),
-			checked: false,
+			title: e.target[0].value.trim(),
+			completed: false,
 		};
 
-		if (newTodo.content.length) {
+		if (newTodo.title.length) {
 			setTodos((prev) => [...prev, newTodo]);
 		}
 	};
 
-	const checkTodo = (todo: Todo, checked: boolean) => {
+	const checkTodo = (todo: Todo, completed: boolean) => {
 		const indexOfTodoToCheck = todos.findIndex((item) => item.id === todo.id);
 		if (indexOfTodoToCheck === -1) {
 			throw new Error('Something wrong with your id logic');
@@ -35,12 +40,12 @@ const App = () => {
 
 		setTodos([
 			...todos.slice(0, indexOfTodoToCheck),
-			{ id: todo.id, content: todo.content, checked: checked },
+			{ id: todo.id, title: todo.title, completed: completed },
 			...todos.slice(indexOfTodoToCheck + 1),
 		]);
 	};
 
-	const editTodo = (todo: Todo, newContent: string) => {
+	const editTodo = (todo: Todo, newTitle: string) => {
 		const indexOfTodoToEdit = todos.findIndex((item) => item.id === todo.id);
 		if (indexOfTodoToEdit === -1) {
 			throw new Error('Something wrong with your id logic');
@@ -48,7 +53,7 @@ const App = () => {
 
 		setTodos([
 			...todos.slice(0, indexOfTodoToEdit),
-			{ id: todo.id, content: newContent, checked: todo.checked },
+			{ id: todo.id, title: newTitle, completed: todo.completed },
 			...todos.slice(indexOfTodoToEdit + 1),
 		]);
 	};
@@ -68,10 +73,10 @@ const App = () => {
 	};
 
 	const removeAllChecks = () => {
-		setTodos([...todos.map((todo: Todo) => ({ ...todo, checked: false }))]);
+		setTodos([...todos.map((todo: Todo) => ({ ...todo, completed: false }))]);
 	};
 
-	const a = todos.filter((todo) => todo.checked).length;
+	const a = todos.filter((todo) => todo.completed).length;
 	const b = todos.length;
 
 	return (

@@ -5,15 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Server",
+      "command": "npm run start:nodemon",
+      "name": "Run npm start",
       "request": "launch",
-      "type": "node",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "runtimeExecutable": "ts-node",
-      "console": "integratedTerminal",
-      "program": "${workspaceFolder}/src/index.ts",
+      "type": "node-terminal",
+      "console": "integratedTerminal"
     }
   ]
 }
