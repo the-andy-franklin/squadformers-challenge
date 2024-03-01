@@ -9,7 +9,7 @@ JSON server, but that's about it. So with that said, let's dive right in!
 #### Clone repository
 Clone the repository from Github.
 ```bash
-$ git clone git@github.com:squadformers/fsd-exercise.git
+$ git clone https://github.com/the-andy-franklin/squadformers-challenge.git
 ```
 
 #### Install dependancies
